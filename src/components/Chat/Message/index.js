@@ -3,7 +3,7 @@ import styles from './styles.module.scss'
 
 const ChatMessage = ({ avatarSrc, datetime, text }) => (
   <div className={styles.message}>
-    <img className={styles.avatar} src={avatarSrc} />
+    <img className={styles.avatar} src={avatarSrc} alt={avatarSrc}/>
     <div className={styles.datetime}>{datetime}</div>
     <p>{text}</p>
   </div>
