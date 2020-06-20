@@ -1,0 +1,16 @@
+.message {
+  border-bottom: solid 1px #ccc;
+  padding: 20px;
+  transform: rotate(180deg);
+  direction: ltr;
+
+  .avatar {
+    float: left;
+    margin-right: 5px;
+  }
+
+  .datetime {
+    float: right;
+    color: #999;
+  }
+}
