@@ -79,24 +79,32 @@ const Chat = (props) => {
     },
   ])
 
+  const scrollTop = useCallback(() => {
+    //console.log('Hey')
+    const chatContentDom =
+      chatContentRef && chatContentRef.current ? chatContentRef.current : null
+    if (chatContentDom) chatContentDom.scrollTop = chatContentDom.scrollHeight
+  }, [chatContentRef, messages])
+
   const appendMessage = useCallback(
     (evt) => {
       evt.preventDefault()
       const newMessage = buildMessage({ text: currentMessageText })
       setMessages([...messages, newMessage])
       setCurrentMessageText('')
+      scrollTop()
     },
-    [currentMessageText, messages, setCurrentMessageText, setMessages]
+    [
+      currentMessageText,
+      messages,
+      scrollTop,
+      setCurrentMessageText,
+      setMessages,
+    ]
   )
 
   const onCurrentMessageTextChange = (evt) =>
     setCurrentMessageText(evt.target.value)
-
-  const scrollTop = () => {
-    const chatContentDom =
-      chatContentRef && chatContentRef.current ? chatContentRef.current : null
-    if (chatContentDom) chatContentDom.scrollTop = chatContentDom.scrollHeight
-  }
 
   useEffect(() => {
     scrollTop()
